@@ -49,6 +49,11 @@ def convert_webp_to_gif(input_folder):
 
 
 if __name__ == "__main__":
-    input_folder = r"E:/Download/Telegram Desktop/BanG_Dream_Mygo_by_moe_sticker_bot_batch_webp/5115477402/convert"
+    config = "config.json"
+
+    with open(config, "r", encoding="utf-8") as f:
+        config = json.load(f)
+
+    input_folder = config.get("input_folder")
 
     convert_webp_to_gif(input_folder)
