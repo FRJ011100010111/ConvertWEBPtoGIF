@@ -49,7 +49,7 @@ def convert_webp_to_gif(input_folder):
 
 
 if __name__ == "__main__":
-    config = "config.json"
+    config = "./config.json"
 
     with open(config, "r", encoding="utf-8") as f:
         config = json.load(f)
