@@ -27,7 +27,7 @@ def convert_webp_to_gif(input_folder):
                     palette_path, palette_file_name)
 
                 subprocess.run([
-                    "ffmpeg", "-i", input_file_path,
+                    "./ffmpeg", "-i", input_file_path,
                     "-vf", "fps=24,scale=400:-1:flags=lanczos,palettegen",
                     palette_file_path
                 ], check=True)
@@ -38,7 +38,7 @@ def convert_webp_to_gif(input_folder):
                     output_folder, output_file_name)
 
                 subprocess.run([
-                    "ffmpeg", "-i", input_file_path, "-i", palette_file_path,
+                    "./ffmpeg", "-i", input_file_path, "-i", palette_file_path,
                     "-lavfi", "fps=24,scale=400:-1:flags=lanczos [x]; [x][1:v] paletteuse",
                     output_file_path
                 ], check=True)
@@ -55,5 +55,6 @@ if __name__ == "__main__":
         config = json.load(f)
 
     input_folder = config.get("input_folder")
+    print(input_folder)
 
     convert_webp_to_gif(input_folder)
